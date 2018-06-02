@@ -1,0 +1,45 @@
+<Page
+    class="page"
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android
+        because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the
+        NavigationButton as a side-drawer button in iOS is not possible,
+        because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" 
+            android:visibility="collapsed" 
+            tap="onDrawerButtonTap"
+            ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Home"></Label>
+    </ActionBar>
+    
+    
+    <StackLayout orientation="vertical" class="sidedrawer-header" >
+                <Label class="sidedrawer-header-image fa" text="&#xf2bd;" />
+                <Label class="sidedrawer-header-brand" text="User Name" />
+                <Label class="footnote" text="username@mail.com" />
+                <Label row="0" text="Binding the ListView items property to collection" textWrap="true" />
+<Button row="1" text="Add new item" tap="onTap" />
+<ListView row="2" id="firstListView" items="{{ myItems }}" itemTap="listViewItemTap" class="list-group" />
+<Label row="3" text="Define the ListView itemTemplate property" textWrap="true" />
+<Button row="4" text="Add new item (Second ListView)" tap="onSecondTap" />
+<ListView row="5" items="{{ mySecondItems }}" itemTap="secondListViewItemTap" class="list-group">
+    <ListView.itemTemplate>
+        <StackLayout class="list-group-item">
+            <Label text="{{ title || 'Downloading...' }}" textWrap="true" class="title" />
+        </StackLayout>
+    </ListView.itemTemplate>
+</ListView>
+            </StackLayout>
+    
+
+</Page>
